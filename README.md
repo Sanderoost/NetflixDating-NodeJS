@@ -14,3 +14,7 @@ Next install the npm
 Run start to finish installing this project
 
 > npm run start
+
+# License
+
+ics for the license
