@@ -1,0 +1,22 @@
+{
+  "name": "blok-tech",
+  "version": "1.0.0",
+  "description": "Function for the dating app in blok-tech",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sanderoost/blok-tech.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Sander Oostenbrink",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sanderoost/blok-tech/issues"
+  },
+  "homepage": "https://github.com/Sanderoost/blok-tech#readme"
+}
