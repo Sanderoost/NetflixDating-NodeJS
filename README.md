@@ -1,19 +1,16 @@
 # blok-tech
 Op deze pagina vind je de bestanden en documentatie van Project tech
 
-# Features
+# Installing
 
 #Install guide To install this project: First clone the repository of this project
 
-> git clone ...
+> git clone https://github.com/Sanderoost/blok-tech
 
 Next install the npm
 
-> npm install
+> npm install blok-tech
 
-Run start to finish installing this project
-
-> npm run start
 
 # License
 
