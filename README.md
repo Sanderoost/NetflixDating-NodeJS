@@ -14,7 +14,3 @@ Op deze pagina vind je de bestanden en documentatie van Project tech
 3. Run the application 
 
 > npm run start
-
-# License
-
-ics for the license
