@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Sanderoost/blok-tech/issues"
   },
-  "homepage": "https://github.com/Sanderoost/blok-tech#readme"
+  "homepage": "https://github.com/Sanderoost/blok-tech#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
 }

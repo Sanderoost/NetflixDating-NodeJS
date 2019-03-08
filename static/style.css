@@ -1,0 +1,29 @@
+h1{
+	background-color: #ff420e;
+	color: black;
+}
+body{
+	background-color: #f98866;
+}
+img{
+	width: 1000px;
+}
+p{
+	background-color: white;
+	color: black;
+	padding: 5px;
+	border: solid 1px black;
+}
+ul{
+	background-color: white;
+
+}
+li{
+	display: inline;
+	color: black;
+}
+li a{
+	color: black;
+	padding:1.2em;
+	margin: 1.3em;
+}
