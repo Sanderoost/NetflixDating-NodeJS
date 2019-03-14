@@ -12,7 +12,7 @@ app
     .get('/', homepage)
     .post('/', push)
     .get('/about', about)
-    .get('*', error404);
+    .get('*', notfound);
 
 var data = [
     {
@@ -53,6 +53,6 @@ function remove(req, res) {
 function about(req, res){
   res.render("about.pug");
 }
-function error404(req, res){
-  res.status(404).send('404: De pagina is helaas niet gevonden');
+function notfound(req, res){
+  res.status(404).render("notfound.pug");
 }
