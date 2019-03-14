@@ -56,5 +56,3 @@ function about(req, res){
 function error404(req, res){
   res.status(404).send('404: De pagina is helaas niet gevonden');
 }
-
-app.listen(port, () => console.log(`Server is gestart op port: ${port}!`))
