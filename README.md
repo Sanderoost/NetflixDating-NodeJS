@@ -1,7 +1,7 @@
-# blok-tech
-On this page you will find the documentation for blok-tech
+## Dating app: Match with films & series
+Let the user find a match based on his or her favorite movies and series.
 
-# Installing
+### Installing
 
 1. Clone the repository
 
@@ -14,3 +14,5 @@ On this page you will find the documentation for blok-tech
 3. Run the application 
 
 > node index.js
+
+Find all the required packages in the package.json file
