@@ -1,5 +1,5 @@
 # blok-tech
-Op deze pagina vind je de bestanden en documentatie van Project tech
+On this page you will find the documentation for blok-tech
 
 # Installing
 
