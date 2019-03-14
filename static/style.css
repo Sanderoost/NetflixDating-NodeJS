@@ -1,29 +1,73 @@
-h1{
-	background-color: #ff420e;
-	color: black;
+@font-face {
+  font-family: netflix;
+  src: url(static/bebasnue.otf);
+}
+header img{
+	width: 60px;
 }
 body{
-	background-color: #f98866;
+	background-color: black;
+  	height: 100%;
+  	margin: 0;
+  	position: relative;
 }
-img{
-	width: 1000px;
-}
-p{
-	background-color: white;
-	color: black;
-	padding: 5px;
-	border: solid 1px black;
-}
-ul{
-	background-color: white;
-
+ul{	
+	display: inline;
 }
 li{
 	display: inline;
-	color: black;
+}
+h5{
+	color: white;
+	font-family: netflix;
 }
 li a{
-	color: black;
+	color: red;
 	padding:1.2em;
 	margin: 1.3em;
+	font-family: netflix;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+	transition: all .2s ease-in-out;
+}
+li a:hover{
+	transform: scale(1.1); /* Equal to scaleX(0.7) scaleY(0.7) */
+}
+body p{
+	color: white;
+	font-family: netflix;
+}
+input{
+	color: white;
+	border:solid 1px white;
+	border-top-left-radius: 1.1em;
+	border-bottom-left-radius: 1.1em;
+	border: none;
+	padding: 0.7em;
+	background-color: red;
+}
+.add{
+	border-top-right-radius: 1.1em;
+	border-bottom-right-radius: 1.1em;
+	border: none;
+	padding: 0.35em;
+	font-size: 1.1em;
+	background-color: red;
+	color: white;
+	margin-top: 0.1em;
+}
+.delete{
+	
+}
+
+footer{
+	/*border-top: solid 1px red;*/
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+footer p{
+	color: red;
+	font-family: netflix;
+	letter-spacing: 0.1em;
 }
