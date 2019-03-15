@@ -11,15 +11,24 @@ body{
   	margin: 0;
   	position: relative;
 }
+aside{
+	width: 20%;
+}
+article{
+	width: 20%;
+	margin: auto;
+}
+
 ul{	
 	display: inline;
 }
 li{
-	display: inline;
+	display: block;
 }
-h5{
+h4{
 	color: white;
 	font-family: netflix;
+	display: inline;
 }
 li a{
 	color: red;
@@ -43,21 +52,41 @@ input{
 	border-top-left-radius: 1.1em;
 	border-bottom-left-radius: 1.1em;
 	border: none;
-	padding: 0.7em;
+	padding: 0.4em;
 	background-color: red;
+}
+#enable{
+	border: none;
+	background-color:black;
+	color: red;
+	letter-spacing: 0.1em;
+	font-family: netflix;
+}
+#enable:hover{
+	cursor: pointer;
+	transform: scale(1.02);
 }
 .add{
 	border-top-right-radius: 1.1em;
 	border-bottom-right-radius: 1.1em;
 	border: none;
-	padding: 0.35em;
+	padding: 0.1em;
 	font-size: 1.1em;
 	background-color: red;
 	color: white;
 	margin-top: 0.1em;
 }
 .delete{
-	
+	background-color: black;
+	color: white;
+	border: none;
+}
+
+.hide{
+	display: none;
+}
+.show{
+	display: inline;
 }
 
 footer{

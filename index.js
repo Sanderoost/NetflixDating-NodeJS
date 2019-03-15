@@ -56,3 +56,5 @@ function about(req, res){
 function notfound(req, res){
   res.status(404).render("notfound.pug");
 }
+
+app.listen(port, () => console.log(`Server is gestart op port: ${port}!`))

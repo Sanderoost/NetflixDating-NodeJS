@@ -9,7 +9,8 @@ if (enable) {
   enable.addEventListener('click', enableform)
 }
 function enableform(){
-	console.log(form);
+	form.classList="show";
+  enable.classList.add("hide");
 }
 
 function onremove(ev) {
