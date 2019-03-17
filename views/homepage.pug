@@ -2,14 +2,14 @@ html
 	body
 		include header.pug
 		section
-			p Wat zijn jouw favoriete series?
-				- for (var x = 0; x < data.length; x++)
-						article(class="")
-							h3= data[x].title
-							button(id="js-remove", data-id=data[x].id, class="delete") X
-				button(id="enable") Voeg film/serie toe +
-				form(action="/", method="post", class="hide")
-					input(id='film',type='text',name='film')
-					button(type="submit", class='add') +
+			h2 Wat zijn jouw favoriete series?
+			- for (var x = 0; x < data.length; x++)
+					article(class="")
+						p= data[x].title
+						button(id="js-remove", data-id=data[x].id, class="delete") X
+			button(id="enable") Voeg film/serie toe +
+			form(action="/", method="post", class="hide")
+				input(id='film',type='text',name='film')
+				button(type="submit", class='add') +
 	footer
 		include footer.pug

@@ -4,6 +4,8 @@ const port = 3000;
 var slug = require('slug');
 var bodyParser = require('body-parser');
 
+var api = "http://www.omdbapi.com/?i=tt3896198&apikey=";
+var apikey = "e1225bf"
 app
     .use('/static', express.static('static'))
     .use(bodyParser.urlencoded({extended: true}))

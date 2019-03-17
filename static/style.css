@@ -10,13 +10,20 @@ body{
   	height: 100%;
   	margin: 0;
   	position: relative;
+  	display: flex;
+}
+h1{
+	color: white;
+	margin: 1em auto;
+	width: 80%;
+	font-family: netflix;
 }
 aside{
 	width: 20%;
+	display: inline
 }
-article{
-	width: 20%;
-	margin: auto;
+section{
+	margin: 5em auto;
 }
 
 ul{	
@@ -24,11 +31,8 @@ ul{
 }
 li{
 	display: block;
-}
-h4{
-	color: white;
-	font-family: netflix;
-	display: inline;
+	margin-top: 1.2em;
+	transition: all .2s ease-in-out;
 }
 li a{
 	color: red;
@@ -37,14 +41,51 @@ li a{
 	font-family: netflix;
 	letter-spacing: 0.1em;
 	text-decoration: none;
-	transition: all .2s ease-in-out;
+	font-size: 1.1em;
 }
-li a:hover{
-	transform: scale(1.1); /* Equal to scaleX(0.7) scaleY(0.7) */
+li:hover{
+	transform: scaleX(1.1); /* Equal to scaleX(0.7) scaleY(0.7) */
 }
-body p{
+body h2{
 	color: white;
 	font-family: netflix;
+	padding-bottom: .05em;
+}
+body h2:after{
+	text-align: center;
+	margin-top: -0.8em;
+	display: block;
+	content: "________________"
+}
+article{
+	text-align: center;
+}
+
+article p{
+	color: white;
+	font-family: netflix;
+	display: inline;
+}
+body p{
+	font-size: 1.3em;
+}
+
+#enable{
+	border: none;
+	background-color:black;
+	color: red;
+	letter-spacing: 0.1em;
+	font-family: netflix;
+	margin: 0.4em auto;
+	display: inherit;
+}
+#enable:hover{
+	cursor: pointer;
+	transform: scale(1.02);
+}
+form{
+	text-align: center;
+	transition: visibility 5s;
 }
 input{
 	color: white;
@@ -55,17 +96,6 @@ input{
 	padding: 0.4em;
 	background-color: red;
 }
-#enable{
-	border: none;
-	background-color:black;
-	color: red;
-	letter-spacing: 0.1em;
-	font-family: netflix;
-}
-#enable:hover{
-	cursor: pointer;
-	transform: scale(1.02);
-}
 .add{
 	border-top-right-radius: 1.1em;
 	border-bottom-right-radius: 1.1em;
@@ -74,7 +104,6 @@ input{
 	font-size: 1.1em;
 	background-color: red;
 	color: white;
-	margin-top: 0.1em;
 }
 .delete{
 	background-color: black;
@@ -83,11 +112,12 @@ input{
 }
 
 .hide{
-	display: none;
+	visibility: hidden;
 }
 .show{
-	display: inline;
+	visibility: visible;
 }
+
 
 footer{
 	/*border-top: solid 1px red;*/
