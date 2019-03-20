@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const dotenv = require("dotenv");
 var slug = require('slug');
 var bodyParser = require('body-parser');
 
 var api = "http://www.omdbapi.com/?i=tt3896198&apikey=";
-var apikey = "e1225bf"
+
+dotenv.config(); // you can now use dotenv
+
+var apikey = process.env.API_KEY;
+
 app
     .use('/static', express.static('static'))
     .use(bodyParser.urlencoded({extended: true}))
