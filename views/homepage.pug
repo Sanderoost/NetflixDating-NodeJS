@@ -1,15 +1,21 @@
 html
 	body
 		include header.pug
+		script(src="https://code.jquery.com/jquery-1.12.4.js")
+		script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
 		section
 			h2 Wat zijn jouw favoriete series?
-			- for (var x = 0; x < data.length; x++)
-					article(class="")
-						p= data[x].title
-						button(id="js-remove", data-id=data[x].id, class="delete") X
+			ul(id="sortable")
+				- for (var x = 0; x < data.length; x++)
+						li(data-id=data[x].id)
+							span= x+1
+							img.image(src=data[x].img)
+							p= data[x].title
+							small= data[x].rating
+							button(data-id=data[x].id, class="delete") X
 			button(id="enable") Voeg film/serie toe +
 			form(action="/", method="post", class="hide")
-				input(id='film',type='text',name='film')
+				input(id='film',type='text',name='film', required)
 				button(type="submit", class='add') +
 	footer
 		include footer.pug

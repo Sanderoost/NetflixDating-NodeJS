@@ -1,6 +1,15 @@
+:root{
+	--red: #e50914;
+	--white: #fff;
+}
+
 @font-face {
   font-family: netflix;
   src: url(static/bebasnue.otf);
+}
+@font-face {
+  font-family: helvetica;
+  src: url(static/Helvetica.otf);
 }
 header img{
 	width: 60px;
@@ -9,33 +18,26 @@ body{
 	background-color: black;
   	height: 100%;
   	margin: 0;
-  	position: relative;
-  	display: flex;
 }
 h1{
-	color: white;
+	color: var(--white);
 	margin: 1em auto;
 	width: 80%;
 	font-family: netflix;
 }
-aside{
-	width: 20%;
-	display: inline
-}
-section{
-	margin: 5em auto;
-}
+
 
 ul{	
-	display: inline;
+	list-style: none;
+	display: inline-block;
 }
-li{
-	display: block;
+header li{
+	display: inline;
 	margin-top: 1.2em;
 	transition: all .2s ease-in-out;
 }
-li a{
-	color: red;
+header li a{
+	color: var(--red);
 	padding:1.2em;
 	margin: 1.3em;
 	font-family: netflix;
@@ -43,38 +45,51 @@ li a{
 	text-decoration: none;
 	font-size: 1.1em;
 }
-li:hover{
-	transform: scaleX(1.1); /* Equal to scaleX(0.7) scaleY(0.7) */
-}
-body h2{
-	color: white;
-	font-family: netflix;
-	padding-bottom: .05em;
-}
-body h2:after{
-	text-align: center;
-	margin-top: -0.8em;
-	display: block;
-	content: "________________"
-}
-article{
-	text-align: center;
-}
-
-article p{
-	color: white;
-	font-family: netflix;
-	display: inline;
+header li:hover{
+	transform: scale(1.1); 
 }
 body p{
 	font-size: 1.3em;
 }
+body h2{
+	color: white;
+	font-size: 1.3em;
+	font-family: helvetica;
+}
+
+/* Article info */
+section li{
+	margin-top: 1em; 
+	padding: 0.5em;
+	cursor: grab;
+	transition: 1s all;
+}
+section li img{
+	vertical-align: middle;
+	height: 5em;
+}
+section li p, span{
+	margin-left: 1.1em;
+	color: white;
+	font-family: netflix;
+	display: inline;
+}
+section li:hover{
+	transform: scaleX(1.02); 
+}
+li small{
+	color: white;
+	font-family: netflix;
+	margin-right: 0.4em; 
+}
 
 #enable{
-	border: none;
-	background-color:black;
-	color: red;
+	border: solid 1px var(--red);
+	background-color: var(--red);
+	color: white;
 	letter-spacing: 0.1em;
+	padding: 0.5em;
+	font-size: 1.1em;
 	font-family: netflix;
 	margin: 0.4em auto;
 	display: inherit;
@@ -90,19 +105,15 @@ form{
 input{
 	color: white;
 	border:solid 1px white;
-	border-top-left-radius: 1.1em;
-	border-bottom-left-radius: 1.1em;
 	border: none;
-	padding: 0.4em;
-	background-color: red;
+	padding: 0.44em;
+	background-color: var(--red);
 }
 .add{
-	border-top-right-radius: 1.1em;
-	border-bottom-right-radius: 1.1em;
 	border: none;
-	padding: 0.1em;
-	font-size: 1.1em;
-	background-color: red;
+	padding: 0.09em;
+	font-size: 1em;
+	background-color: var(--red);
 	color: white;
 }
 .delete{
@@ -112,12 +123,13 @@ input{
 }
 
 .hide{
-	visibility: hidden;
+	display: none !important;
 }
 .show{
-	visibility: visible;
+	display: block;
 }
 
+/* Footer info */
 
 footer{
 	/*border-top: solid 1px red;*/
