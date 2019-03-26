@@ -4,18 +4,24 @@ html
 		script(src="https://code.jquery.com/jquery-1.12.4.js")
 		script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
 		section
-			h2 Wat zijn jouw favoriete series?
-			ul(id="sortable")
+			-
+			if user 
+				h2 Jouw favorieten
+			else
+				h2 Dit zijn de keuzes van Sander
+			ul
 				- for (var x = 0; x < data.length; x++)
-						li(data-id=data[x].id)
+						li(data-id=data[x]._id)
+							img.image(src=data[x].poster)
 							span= x+1
-							img.image(src=data[x].img)
 							p= data[x].title
-							small= data[x].rating
-							button(data-id=data[x].id, class="delete") X
-			button(id="enable") Voeg film/serie toe +
-			form(action="/", method="post", class="hide")
-				input(id='film',type='text',name='film', required)
-				button(type="submit", class='add') +
+							if user
+								button(data-id=data[x]._id, class="delete")
+									i(class="fas fa-trash-alt")
+			if user
+				button(id="enable") Voeg een serie/film toe +
+				form(action="/", method="post", class="hide addform")
+					input(id='film',type='text',name='film', required)
+					button(type="submit", class='add') +
 	footer
 		include footer.pug

@@ -1,0 +1,18 @@
+html
+	body(class='loginpage')
+		style
+			include ../static/style.css
+		header
+			nav
+				img.image(src='static/netflix.png') 
+		section
+			form(action="/login", method="post", class="login")
+				h1 Aanmelden
+				label(for="user") E-mail:
+				input(class='field', id='user',type='text',name='user', required)
+				label(for="password") Wachtwoord:
+				input(class='field', id='password',type='password',name='password', required)
+				input#remember(class='checkbox', type='checkbox', name='remember', checked=true)
+				span Mijn gegevens onthouden
+				button(type="submit") Aanmelden
+				a(href='') of registreer je

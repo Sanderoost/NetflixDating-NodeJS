@@ -13,6 +13,6 @@ Let the user find a match based on his or her favorite movies and series.
 
 3. Run the application 
 
-> node index.js
+> npm run start
 
 Find all the required packages in the package.json file
