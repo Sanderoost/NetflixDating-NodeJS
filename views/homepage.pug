@@ -8,7 +8,7 @@ html
 			if user 
 				h2 Jouw favorieten
 			else
-				h2 Dit zijn de keuzes van Sander
+				h2 Dit zijn de keuzes van Sander Oostenbrink
 			ul
 				- for (var x = 0; x < data.length; x++)
 						li(data-id=data[x]._id)
@@ -17,11 +17,11 @@ html
 							p= data[x].title
 							if user
 								button(data-id=data[x]._id, class="delete")
-									i(class="fas fa-trash-alt")
-			if user
+									i(data-id=data[x]._id, class="fas fa-trash-alt")
+			if user && data.length < 5
 				button(id="enable") Voeg een serie/film toe +
 				form(action="/", method="post", class="hide addform")
 					input(id='film',type='text',name='film', required)
-					button(type="submit", class='add') +
+					button(type="submit", class='add') Toevoegen
 	footer
 		include footer.pug

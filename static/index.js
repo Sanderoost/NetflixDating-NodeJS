@@ -8,9 +8,7 @@ $( function() {
 var enable = document.getElementById('enable');
 var form = document.getElementsByTagName("form")[0];
 var ul = document.getElementsByTagName("ul")[0];
-// if(user){
-//   ul.setAttribute("id", "sortable");
-// }
+
 // creates button function for every id
 const buttons = document.querySelectorAll('ul button');
 buttons.forEach(function(currentBtn){
@@ -21,10 +19,6 @@ if (enable) {
   enable.addEventListener('click', enableform);
 }
 
-// Hide add button if the screen has 5 li
-if (document.getElementsByTagName("section li").length > 4) {
-  enable.classList.add("hide");
-}
 
 function enableform(){
 	form.classList="show addform";
@@ -43,6 +37,6 @@ function onremove(ev) {
     if (res.status !== 200) {
       throw new Error('Could not delete!');
     }
-    window.location = '/';
+    window.location = '/';  
   }
 }
