@@ -12,8 +12,8 @@ const bodyParser = require("body-parser");
 // Database variables
 const app = express();
 const port = 3000;
-var db = null;
-var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
+let db = null;
+let url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
 
 // Connect to the database
 mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
@@ -80,8 +80,8 @@ function notfound(req, res){
 
 // Login verify
 function verify(req, res){
-  var email = req.body.user;
-  var password = req.body.password;
+  let email = req.body.user;
+  let password = req.body.password;
   db.collection("login").findOne({}, function(err, result) {
     if (err) throw err;
       if (result.email == email && result.password == password) {
@@ -93,8 +93,8 @@ function verify(req, res){
 
 // Push data into array
 function push(req, res){
-  var id = slug(req.body.film).toLowerCase();
-  var api = "http://www.omdbapi.com/?t=" + id + "&apikey=" + process.env.APIKEY;
+  let id = slug(req.body.film).toLowerCase();
+  let api = "http://www.omdbapi.com/?t=" + id + "&apikey=" + process.env.APIKEY;
   //Make a reqeust to the omdbapi
   axios.get(api)
    .then(function(response) { 
@@ -102,7 +102,6 @@ function push(req, res){
         email: req.session.user,
         movieid: req.body.film,
         title: response.data.Title,
-        rank: 3,
         poster: response.data.Poster
       }, done);
       function done(err, data) {
@@ -113,14 +112,14 @@ function push(req, res){
         }
       }
     })
-  .catch(function(data){
+  .catch(data => {
     console.log(error.response.data);
   });
 }
 
 
 function remove(req, res) {
-  var id = req.params.id;
+  let id = req.params.id;
   db.collection("user").deleteOne({
     _id: mongo.ObjectID(id)
   }, done);
@@ -134,6 +133,4 @@ function remove(req, res) {
   }
 }
 
-app.listen(port, function(){
-  console.log("Server has been started on " + port)
-});
+app.listen(port);
