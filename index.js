@@ -12,13 +12,20 @@ const bodyParser = require("body-parser");
 // Database variables
 const app = express();
 const port = 3000;
-var db = null;
-var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
+let db = null;
+let url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
 
 // Connect to the database
 mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
 	db = client.db(process.env.DB_NAME);
 });
+
+const homepage = require('./controller/homepage.js');
+const about = require('./controller/about.js');
+const login = require('./controller/login.js');
+const verify = require('./controller/verify.js');
+const logout = require('./controller/logout.js');
+const add = require('./controller/add.js');
 
 app
     .use("/static", express.static("static"))
@@ -33,68 +40,23 @@ app
     .get("/", homepage)
     .get("/about", about)
     .get("/login", login)
-    .get("/logout", logout)
+    .get("/logout", logout)   
+    .get("/add", add)
+    .get("/:id", push)
+    .post("/add", show)
     .post("/login", verify)
-    .post("/", push)
     .get("*", notfound);
-
-function homepage(req, res) {
-  // Get data from the user database
-	db.collection("user").find().toArray(done);
-	function done(err, data) {
-		if (err) {
-			console.log(err);
-		} else {
-			res.render("homepage.pug", {
-	        data: data,
-	        user: req.session.user
-	      });
-	    }
-	  }
-}
-
-function about(req, res){
-  res.render("about.pug", {
-    user:req.session.user
-  });
-}
-
-function login(req, res){
-  res.render("login.pug");
-}
-
-function logout(req, res) {
-  req.session.destroy(function (err) {
-    if (err) {
-      console.log(err);
-    } 
-    else {
-      res.redirect("/");
-    }
-  });
-}
 
 function notfound(req, res){
   res.status(404).render("notfound.pug");
 }
 
-// Login verify
-function verify(req, res){
-  var email = req.body.user;
-  var password = req.body.password;
-  db.collection("login").findOne({}, function(err, result) {
-    if (err) throw err;
-      if (result.email == email && result.password == password) {
-        req.session.user = email;
-        res.redirect("/");
-      }
-  });
-}
+
 
 // Push data into array
 function push(req, res){
-  var id = slug(req.body.film).toLowerCase();
-  var api = "http://www.omdbapi.com/?t=" + id + "&apikey=" + process.env.APIKEY;
+  let id = req.params.id;
+  let api = "http://www.omdbapi.com/?i=" + id + "&apikey=" + process.env.APIKEY;
   //Make a reqeust to the omdbapi
   axios.get(api)
    .then(function(response) { 
@@ -102,7 +64,6 @@ function push(req, res){
         email: req.session.user,
         movieid: req.body.film,
         title: response.data.Title,
-        rank: 3,
         poster: response.data.Poster
       }, done);
       function done(err, data) {
@@ -113,14 +74,31 @@ function push(req, res){
         }
       }
     })
-  .catch(function(data){
+  .catch(data => {
+    console.log(error.response.data);
+  });
+}
+
+// Push data into array
+function show(req, res){
+  let id =  req.body.search;
+  let api = "http://www.omdbapi.com/?s=" + id + "&apikey=" + process.env.APIKEY;
+  //Make a reqeust to the omdbapi
+  axios.get(api)
+   .then(function(response) {
+      res.render("add.pug", {
+        user:req.session.user,
+        data:response.data
+      });
+    })
+  .catch(data => {
     console.log(error.response.data);
   });
 }
 
 
 function remove(req, res) {
-  var id = req.params.id;
+  let id = req.params.id;
   db.collection("user").deleteOne({
     _id: mongo.ObjectID(id)
   }, done);
@@ -134,6 +112,4 @@ function remove(req, res) {
   }
 }
 
-app.listen(port, function(){
-  console.log("Server has been started on " + port)
-});
+app.listen(port);

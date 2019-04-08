@@ -1,8 +1,6 @@
 html
-	body
+	body.no-js
 		include header.pug
-		script(src="https://code.jquery.com/jquery-1.12.4.js")
-		script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
 		section
 			-
 			if user 
@@ -19,9 +17,10 @@ html
 								button(data-id=data[x]._id, class="delete")
 									i(data-id=data[x]._id, class="fas fa-trash-alt")
 			if user && data.length < 5
-				button(id="enable") Voeg een serie/film toe +
-				form(action="/", method="post", class="hide addform")
-					input(id='film',type='text',name='film', required)
-					button(type="submit", class='add') Toevoegen
+				form(class='searchform', method='post', action='/add')
+					label Zoek naar een film/serie
+					input(class='field', id='search',type='text',name='search', required)
+					button(type="submit") Zoeken
+				a(class href='/add') Voeg een serie/film toe +
 	footer
 		include footer.pug
