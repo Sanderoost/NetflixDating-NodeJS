@@ -20,7 +20,7 @@ With this function the user can fill in his top 5 selection of favorite movies a
 
 Find all the required packages in the package.json file
 
-### Api
+### OMDb Api
 This project uses the omdb api which contains almost all films/series ever produced
 
 http://www.omdbapi.com/
