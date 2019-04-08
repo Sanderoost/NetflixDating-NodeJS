@@ -22,7 +22,9 @@ Find all the required packages in the package.json file
 
 ### Api
 This project uses the omdb api which contains almost all films/series ever produced
+
 http://www.omdbapi.com/
 
 To acces this api you will need an api key, get your own key by registering here:
+
 http://www.omdbapi.com/apikey.aspx
