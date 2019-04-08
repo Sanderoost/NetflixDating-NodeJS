@@ -20,6 +20,13 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) 
 	db = client.db(process.env.DB_NAME);
 });
 
+const homepage = require('./controller/homepage.js');
+const about = require('./controller/about.js');
+const login = require('./controller/login.js');
+const verify = require('./controller/verify.js');
+const logout = require('./controller/logout.js');
+const add = require('./controller/add.js');
+
 app
     .use("/static", express.static("static"))
     .use(bodyParser.urlencoded({extended: true}))
@@ -35,80 +42,21 @@ app
     .get("/login", login)
     .get("/logout", logout)   
     .get("/add", add)
-    .post("/add", login)
+    .get("/:id", push)
+    .post("/add", show)
     .post("/login", verify)
-    .post("/", push)
     .get("*", notfound);
-
-function homepage(req, res) {
-  // Get data from the user database
-	db.collection("user").find().toArray(done);
-	function done(err, data) {
-		if (err) {
-			console.log(err);
-		} else {
-			res.render("homepage.pug", {
-	        data: data,
-	        user: req.session.user
-	      });
-	    }
-	  }
-}
-
-function about(req, res){
-  res.render("about.pug", {
-    user:req.session.user
-  });
-}
-function add(req, res){
-  res.render("add.pug", {
-    user:req.session.user
-  });
-}
-
-function login(req, res){
-  res.render("login.pug");
-}
-
-function logout(req, res) {
-  req.session.destroy(function (err) {
-    if (err) {
-      console.log(err);
-    } 
-    else {
-      res.redirect("/");
-    }
-  });
-}
 
 function notfound(req, res){
   res.status(404).render("notfound.pug");
 }
 
-// Login verify
-function verify(req, res){
-  let email = req.body.user;
-  let password = req.body.password;
-  db.collection("login").findOne({}, function(err, result) {
-    if (err){ 
-      throw err;
-    }
-      if (result.email == email && result.password == password) {
-        req.session.user = email;
-        res.redirect("/");
-      }
-      else{
-          res.redirect("/", {
-            fault : "Email or password is wrong"
-          })
-      }
-  });
-}
+
 
 // Push data into array
 function push(req, res){
-  let id = slug(req.body.film).toLowerCase();
-  let api = "http://www.omdbapi.com/?t=" + id + "&apikey=" + process.env.APIKEY;
+  let id = req.params.id;
+  let api = "http://www.omdbapi.com/?i=" + id + "&apikey=" + process.env.APIKEY;
   //Make a reqeust to the omdbapi
   axios.get(api)
    .then(function(response) { 
@@ -125,6 +73,23 @@ function push(req, res){
           res.redirect("/");
         }
       }
+    })
+  .catch(data => {
+    console.log(error.response.data);
+  });
+}
+
+// Push data into array
+function show(req, res){
+  let id =  req.body.search;
+  let api = "http://www.omdbapi.com/?s=" + id + "&apikey=" + process.env.APIKEY;
+  //Make a reqeust to the omdbapi
+  axios.get(api)
+   .then(function(response) {
+      res.render("add.pug", {
+        user:req.session.user,
+        data:response.data
+      });
     })
   .catch(data => {
     console.log(error.response.data);

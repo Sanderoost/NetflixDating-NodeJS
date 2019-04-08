@@ -1,8 +1,12 @@
 html
-	body
+	body.no-js
 		include header.pug
 		section
-
+			-	for (var x = 0; x < 5; x++)
+					li
+						img.image(src=data.Poster)
+						span= x+1
+						p= data.Title
 			form(action="/", method="post", class="addform")
 				label(for='film') Zoek een film of serie:
 				input(id='film',type='text',name='film', required)
