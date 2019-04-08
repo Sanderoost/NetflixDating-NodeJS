@@ -166,9 +166,6 @@ section li{
 	position: relative;
 	transition: 1s all;
 }
-#sortable li{
-	cursor: grab;
-}
 section li img{
 	height: 14em;
 }
@@ -197,25 +194,27 @@ section li:hover{
 	transform: scale(1.01); 
 }
 
-#enable{
+section > a{
 	background-color: #e50914;
 	border: solid 1px #e50914;
 	color: white;
-	display: inherit;
+	display: inline;
 	font-family: helvetica;
 	font-size: 0.9em;
-	margin: 0.4em 1.5em;
 	padding: 0.3em;
+	text-decoration: none;
 }
 
 .addform input{
-	background-color: #e50914;
-	border: none;
+	background-color: #5D5D5D;
+	border: white solid 1px;
 	color: white;
-	height: 2em;
-	margin: 0.4em 1.5em;
-	padding: 0.6em;
-	width: 16em;
+	font-family: helvetica;
+	margin-top: 2em;
+	margin-left: 1.5em;
+	padding: 0.4em 0.5em;
+	font-size: 1.05em;
+	width: 32em;
 }
 .add{
 	background-color: #e50914;
@@ -223,6 +222,7 @@ section li:hover{
 	color: white;
 	font-size: 1em;
 }
+
 .delete{
 	background-color: transparent;
 	border: none;	
@@ -235,6 +235,20 @@ section li:hover{
 .delete:hover{
 	color: #e50914;
 	cursor: pointer;
+}
+
+label{
+	display: inline;
+	color: white;
+	font-family: helvetica;
+	margin-left: 0.5em;
+}
+
+#list{
+	width: 90%;
+	display: flex;
+	align-items: stretch;
+	overflow: scroll;
 }
 
 /* Javascipt toggle classes */

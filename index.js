@@ -33,7 +33,9 @@ app
     .get("/", homepage)
     .get("/about", about)
     .get("/login", login)
-    .get("/logout", logout)
+    .get("/logout", logout)   
+    .get("/add", add)
+    .post("/add", login)
     .post("/login", verify)
     .post("/", push)
     .get("*", notfound);
@@ -55,6 +57,11 @@ function homepage(req, res) {
 
 function about(req, res){
   res.render("about.pug", {
+    user:req.session.user
+  });
+}
+function add(req, res){
+  res.render("add.pug", {
     user:req.session.user
   });
 }
@@ -83,10 +90,17 @@ function verify(req, res){
   let email = req.body.user;
   let password = req.body.password;
   db.collection("login").findOne({}, function(err, result) {
-    if (err) throw err;
+    if (err){ 
+      throw err;
+    }
       if (result.email == email && result.password == password) {
         req.session.user = email;
         res.redirect("/");
+      }
+      else{
+          res.redirect("/", {
+            fault : "Email or password is wrong"
+          })
       }
   });
 }

@@ -2,6 +2,11 @@ html
 	body
 		include header.pug
 		section
-			
+
+			form(action="/", method="post", class="addform")
+				label(for='film') Zoek een film of serie:
+				input(id='film',type='text',name='film', required)
+			ul(id='list')
+		script(src="/static/livesearch.js")
 	footer
 		include footer.pug
