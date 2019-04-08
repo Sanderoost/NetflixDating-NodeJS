@@ -20,6 +20,11 @@ With this function the user can fill in his top 5 selection of favorite movies a
 
 Find all the required packages in the package.json file
 
+### Database
+The project uses a mongodb database to store the users data and film selection.
+Database design:
+![Database](https://github.com/Sanderoost/files/blob/master/Database.png)
+
 ### OMDb Api
 This project uses the omdb api which contains almost all films/series ever produced
 
@@ -28,3 +33,4 @@ http://www.omdbapi.com/
 To acces this api you will need an api key, get your own key by registering here:
 
 http://www.omdbapi.com/apikey.aspx
+
