@@ -21,7 +21,7 @@ With this function the user can fill in his top 5 selection of favorite movies a
 Find all the required packages in the package.json file
 
 ### Database
-The project uses a mongodb database to store the users data and film selection.
+The project uses a mongodb database to store the users data and film selection.<br>
 Database design:
 ![Database](https://github.com/Sanderoost/files/blob/master/Database.png)
 
