@@ -24,11 +24,30 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
         db = client.db(process.env.DB_NAME);
     }
 });
-
-
-function about(req, res){
-  res.render("about.pug", {
-    user:req.session.user
+// Push data into array
+function push(req, res){
+  let id = req.params.id;
+  let api = "http://www.omdbapi.com/?i=" + id + "&apikey=" + process.env.APIKEY;
+  //Make a reqeust to the omdbapi
+  axios.get(api)
+   .then(function(response) { 
+     db.collection("user").insertOne({
+        email: req.session.user,
+        movieid: req.body.film,
+        title: response.data.Title,
+        poster: response.data.Poster
+      }, done);
+      function done(err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("/");
+        }
+      }
+    })
+  .catch(data => {
+    console.log(error.response.data);
   });
 }
-module.exports = about;
+
+module.exports = push;

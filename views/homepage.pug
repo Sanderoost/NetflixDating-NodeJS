@@ -4,7 +4,7 @@ html
 		section
 			-
 			if user 
-				h2 Jouw favorieten
+				h2 Jouw favorieten 
 			else
 				h2 Dit zijn de keuzes van Sander Oostenbrink
 			ul
@@ -17,8 +17,8 @@ html
 								button(data-id=data[x]._id, class="delete")
 									i(data-id=data[x]._id, class="fas fa-trash-alt")
 			if user && data.length < 5
-				form(class='searchform', method='post', action='/add')
-					label Zoek naar een film/serie
+				form(class='searchform', method='POST', action='/add')
+					label Voeg een film/serie toe
 					input(class='field', id='search',type='text',name='search', required)
 					button(type="submit") Zoeken
 				a(class href='/add') Voeg een serie/film toe +

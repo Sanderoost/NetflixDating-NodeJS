@@ -25,10 +25,19 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     }
 });
 
+function remove(req, res) {
+  let id = req.params.id;
+  db.collection("user").deleteOne({
+    _id: mongo.ObjectID(id)
+  }, done);
 
-function about(req, res){
-  res.render("about.pug", {
-    user:req.session.user
-  });
+  function done(err) {
+    if (err) {
+      next(err);
+    } else {
+      res.json({status: "ok"});
+    }
+  }
 }
-module.exports = about;
+
+module.exports = remove;

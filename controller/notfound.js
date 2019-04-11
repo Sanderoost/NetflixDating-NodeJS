@@ -24,11 +24,8 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
         db = client.db(process.env.DB_NAME);
     }
 });
-
-
-function about(req, res){
-  res.render("about.pug", {
-    user:req.session.user
-  });
+function notfound(req, res){
+  res.status(404).render("notfound.pug");
 }
-module.exports = about;
+
+module.exports = notfound;

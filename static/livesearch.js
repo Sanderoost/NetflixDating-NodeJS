@@ -1,7 +1,7 @@
-var body = document.querySelector("body")[0];
+var body = document.querySelector("body");
     body.classList.remove("no-js");
 const searchresult = document.getElementById('list'),
-    input = document.querySelector('#film');
+      input = document.querySelector('#film');
 let   search = "los",
       html = '',
       request = new XMLHttpRequest();

@@ -2,11 +2,15 @@ html
 	body.no-js
 		include header.pug
 		section
-			-	for (var x = 0; x < 5; x++)
-					li
-						img.image(src=data.Poster)
-						span= x+1
-						p= data.Title
+			- 
+			if data
+				h2 	Resultaten voor #{search}
+				ul.list
+					-for (var x = 0; x < 5; x++)
+						a(href='/' + data.Search[x].imdbID)
+							li
+								img.image(src=data.Search[x].Poster)
+								p= data.Search[x].Title
 			form(action="/", method="post", class="addform")
 				label(for='film') Zoek een film of serie:
 				input(id='film',type='text',name='film', required)
