@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 
 // Database variables
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 let db = {
     password: process.env.DB_PASSWORD,
     username: process.env.DB_USERNAME,
@@ -58,7 +58,8 @@ app
     .get("/:id", push)
     .post("/add", show)
     .post("/login", verify)
-    .get("*", notfound);
+    .get("*", notfound)
+    .listen(port);
 
 function show(req, res){
   let search =  req.body.search;
@@ -78,4 +79,4 @@ function show(req, res){
   });
 }
 
-app.listen(port);
+

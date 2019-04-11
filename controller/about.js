@@ -6,7 +6,7 @@ const session = require("express-session");
 require("dotenv").config();
 // Database variables
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 let db = {
     password: process.env.DB_PASSWORD,
