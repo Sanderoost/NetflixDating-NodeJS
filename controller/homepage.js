@@ -4,7 +4,7 @@ const mongo = require("mongodb");
 const axios = require("axios");
 const session = require("express-session");
 
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 // Database variables
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,7 +15,7 @@ let db = {
     host: process.env.DB_HOST,
     name: process.env.DB_NAME
 };
-const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}?retryWrites=true`;
+const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`;
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
         console.log("Failed to connect", err);

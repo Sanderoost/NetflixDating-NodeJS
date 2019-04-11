@@ -19,7 +19,7 @@ let db = {
     host: process.env.DB_HOST,
     name: process.env.DB_NAME
 };
-const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}?retryWrites=true`;
+const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`;
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
         console.log("Failed to connect", err);
@@ -58,8 +58,8 @@ app
     .get("/:id", push)
     .post("/add", show)
     .post("/login", verify)
-    .get("*", notfound)
-    .listen(port);
+    .get("*", notfound);
+
 
 function show(req, res){
   let search =  req.body.search;
@@ -78,5 +78,5 @@ function show(req, res){
     console.log(error.response.data);
   });
 }
-
+app.listen(port);
 
