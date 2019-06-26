@@ -48,9 +48,6 @@ function push(req, res){
     }
 }
 
-module.exports = {
-    push,
-
-};
+module.exports = push;
 
 

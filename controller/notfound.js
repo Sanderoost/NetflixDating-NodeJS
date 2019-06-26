@@ -25,7 +25,7 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     }
 });
 function notfound(req, res){
-  res.status(404).render("notfound.pug");
+    res.status(404).render("notfound.pug");
 }
 
 module.exports = notfound;
