@@ -5,8 +5,7 @@ const axios = require("axios");
 const session = require("express-session");
 
 // Other packages
-const dotenv = require("dotenv").config();
-const slug = require("slug");
+require("dotenv").config();
 const bodyParser = require("body-parser");
 
 // Database variables
@@ -44,9 +43,9 @@ app
     .use("/static", express.static("static"))
     .use(bodyParser.urlencoded({extended: true}))
     .use(session({
-      resave: false,
-      saveUninitialized: true,
-      secret: process.env.SESSION_SECRET
+        resave: false,
+        saveUninitialized: true,
+        secret: process.env.SESSION_SECRET
     }))
     .set("view engine", "pug")
     .delete("/:id", remove)
@@ -62,21 +61,22 @@ app
 
 
 function show(req, res){
-  let search =  req.body.search;
-  let api = "http://www.omdbapi.com/?s=" + search + "&apikey=" + process.env.APIKEY;
-  //Make a reqeust to the omdbapi
-  axios.get(api)
-   .then(function(response) {
-    console.log(response.data);
-      res.render("add.pug", {
-        user:req.session.user,
-        search: search,
-        data:response.data
-      });
-    })
-  .catch(data => {
-    console.log(error.response.data);
-  });
+    console.log('done');
+    let search =  req.body.search;
+    let api = "http://www.omdbapi.com/?s=" + search + "&apikey=" + process.env.APIKEY;
+    //Make a reqeust to the omdbapi
+    axios.get(api)
+        .then(function(response) {
+            console.log(response.data);
+            res.render("add.pug", {
+                user:req.session.user,
+                search: search,
+                data:response.data
+            });
+        })
+        .catch(function(data) {
+            console.log(data);
+        });
 }
 app.listen(port);
 

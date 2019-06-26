@@ -1,12 +1,8 @@
 // Database packages
-const express = require("express");
 const mongo = require("mongodb");
 const axios = require("axios");
-const session = require("express-session");
 require("dotenv").config();
 // Database variables
-const app = express();
-const port = process.env.PORT || 3000;
 
 let db = {
     password: process.env.DB_PASSWORD,
@@ -26,28 +22,35 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
 });
 // Push data into array
 function push(req, res){
-  let id = req.params.id;
-  let api = "http://www.omdbapi.com/?i=" + id + "&apikey=" + process.env.APIKEY;
-  //Make a reqeust to the omdbapi
-  axios.get(api)
-   .then(function(response) { 
-     db.collection("user").insertOne({
-        email: req.session.user,
-        movieid: req.body.film,
-        title: response.data.Title,
-        poster: response.data.Poster
-      }, done);
-      function done(err, data) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.redirect("/");
-        }
-      }
-    })
-  .catch(data => {
-    console.log(error.response.data);
-  });
+    let id = req.params.id;
+    if (id !== "favicon.ico") {
+        let api = "http://www.omdbapi.com/?i=" + id + "&apikey=" + process.env.APIKEY;
+        //Make a reqeust to the omdbapi
+        axios.get(api)
+            .then(function(response) { 
+                db.collection("user").insertOne({
+                    email: req.session.user,
+                    movieid: response.data.imdbID,
+                    title: response.data.Title,
+                    poster: response.data.Poster
+                }, done);
+                function done(err, data) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.redirect("/");
+                    }
+                }
+            })
+            .catch(data => {
+                console.log(error.response.data);
+            });
+    }
 }
 
-module.exports = push;
+module.exports = {
+    push,
+
+};
+
+
